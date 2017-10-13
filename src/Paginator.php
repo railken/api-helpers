@@ -2,9 +2,11 @@
 
 namespace Railken\ApiHelpers;
 
+use Railken\ApiHelpers\Contracts\PaginatorContract;
+
 use Railken\Bag;
 
-class Paginator
+abstract class Paginator implements PaginatorContract
 {
 
     /**
@@ -12,7 +14,7 @@ class Paginator
      *
      * @return $this
      */
-    public function execute($query, $page = 1, $take = 10)
+    public function paginate($query, $page = 1, $take = 10)
     {
         $take = (int)$take;
         $page = (int)$page;
@@ -20,9 +22,11 @@ class Paginator
         $take <= 0 && $take = 10;
         $page <= 0 && $page = 1;
 
-        $total = $query->count();
-        $first = ($page - 1) * $take;
-        $last = $first + $take;
+        $total = $this->count($query);
+
+        $skip = ($page - 1) * $take;
+        $last = $skip + $take;
+        $first = $skip+1;
 
         if ($last > $total) {
             $last = $total;
@@ -31,10 +35,11 @@ class Paginator
         $bag = new Bag();
 
         $bag->set('total', $total);
-        $bag->set('max_results', $take);
-        $bag->set('first_result', $first);
+        $bag->set('skip', $skip);
+        $bag->set('take', $take);
         $bag->set('from', $first);
         $bag->set('to', $last);
+        $bag->set('page', $page);
         $bag->set('pages', (ceil($total / $take)));
 
         return $bag;
