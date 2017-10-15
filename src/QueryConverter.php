@@ -86,7 +86,7 @@ class QueryConverter
                 throw new Exceptions\FilterSyntaxException($this->query);
             }
 
-            return FilterNode::factory($this->node->parts[0]);
+            return (new FilterNodeBridge())->newBySupportNode($this->node->parts[0]);
         
         } catch (\Exception $e) {
 
@@ -187,12 +187,10 @@ class QueryConverter
      */
     public function parseClosingBracket()
     {
-
         $this->addPart();
         $this->node->getParent()->parts[] = $this->node;
         $this->node = $this->node->getParent();
         $this->resetBuffer();
-
     }
 
 }
