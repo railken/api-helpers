@@ -3,6 +3,7 @@
 namespace Railken\ApiHelpers;
 
 use Railken\ApiHelpers\Exceptions as Exceptions;
+use Railken\SQ\QueryParser;
 
 class Filter
 {
@@ -21,8 +22,8 @@ class Filter
      *
      * @return Object
      */
-    public function convert($query)
+    public function parse($query)
     {
-        return (new QueryConverter($query))->convert();
+        return (new QueryParser())->parse($query);
     }
 }

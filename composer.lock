@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "c6101d40d6b48e1ca0013cda498535e0",
+    "content-hash": "ae2734306f9229c1b7437767cfa15ccb",
     "packages": [
         {
             "name": "doctrine/inflector",
@@ -349,6 +349,43 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "time": "2017-09-26T20:53:42+00:00"
+        },
+        {
+            "name": "railken/search-query",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/railken/search-query.git",
+                "reference": "d66a40a9f6271465339058687655f060680cbb0c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/railken/search-query/zipball/d66a40a9f6271465339058687655f060680cbb0c",
+                "reference": "d66a40a9f6271465339058687655f060680cbb0c",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "^5.5",
+                "php": ">=7.0.0",
+                "railken/bag": "^1.2"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "~6.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Railken\\SQ\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "keywords": [
+                "api"
+            ],
+            "time": "2017-10-15T20:41:01+00:00"
         },
         {
             "name": "symfony/polyfill-mbstring",
