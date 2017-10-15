@@ -5,27 +5,39 @@ namespace Railken\ApiHelpers;
 class FilterSupportNode
 {
 
-	/**
-	 * Parts
-	 *
-	 * @var array
-	 */
-	public $parts = [];
+    /**
+     * Parts
+     *
+     * @var array
+     */
+    public $parts = [];
 
-	/*
-	 * Parent
-	 *
-	 * @var FilterSupportNode
-	 */
-	private $parent;
+    /*
+     * Parent
+     *
+     * @var FilterSupportNode
+     */
+    private $parent;
 
-	public function setParent(FilterSupportNode $node)
-	{
-		$this->parent = $node;
-	}
+    /**
+     * Set parent node
+     *
+     * @param FilterSupportNode $node
+     *
+     * @return void
+     */
+    public function setParent(FilterSupportNode $node)
+    {
+        $this->parent = $node;
+    }
 
-	public function getParent()
-	{
-		return $this->parent;
-	}
+    /**
+     * Get parent
+     *
+     * @return FilterSupportNode
+     */
+    public function getParent()
+    {
+        return $this->parent;
+    }
 }

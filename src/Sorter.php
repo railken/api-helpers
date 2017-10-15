@@ -49,5 +49,4 @@ class Sorter
     {
         return $this->values;
     }
-
 }

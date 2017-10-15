@@ -44,5 +44,4 @@ abstract class Paginator implements PaginatorContract
 
         return $bag;
     }
-
 }

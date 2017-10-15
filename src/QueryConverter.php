@@ -2,13 +2,12 @@
 
 namespace Railken\ApiHelpers;
 
-
 class QueryConverter
 {
 
     /**
      * Query string
-     * 
+     *
      * @var string
      */
     protected $query;
@@ -58,14 +57,10 @@ class QueryConverter
      */
     public function convert()
     {
-
         try {
-
             $this->node = new FilterSupportNode();
 
             foreach (str_split($this->query) as $char) {
-
-                
                 $char == "\\" && $this->parseStatusEscaping($char);
                 $char == "\"" && $this->parseStatusString($char);
 
@@ -87,13 +82,10 @@ class QueryConverter
             }
 
             return (new FilterNodeBridge())->newBySupportNode($this->node->parts[0]);
-        
         } catch (\Exception $e) {
-
             throw $e;
             //throw new Exceptions\FilterSyntaxException($this->query);
         }
-
     }
 
     /**
@@ -192,5 +184,4 @@ class QueryConverter
         $this->node = $this->node->getParent();
         $this->resetBuffer();
     }
-
 }

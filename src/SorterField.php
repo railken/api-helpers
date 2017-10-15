@@ -28,7 +28,6 @@ class SorterField
      */
     public function __construct()
     {
-
     }
 
     /**
@@ -40,9 +39,9 @@ class SorterField
      */
     public function setName($name)
     {
-    	$this->name = strtolower($name);
+        $this->name = strtolower($name);
 
-    	return $this;
+        return $this;
     }
 
     /**
@@ -52,7 +51,7 @@ class SorterField
      */
     public function getName()
     {
-    	return $this->name;
+        return $this->name;
     }
 
     /**
@@ -64,14 +63,15 @@ class SorterField
      */
     public function setDirection($direction)
     {
-    	$direction = strtolower($direction);
+        $direction = strtolower($direction);
 
-    	if (!in_array($direction, ['asc', 'desc']))
-    		throw new Exceptions\InvalidSorterDirectionException($direction);
+        if (!in_array($direction, ['asc', 'desc'])) {
+            throw new Exceptions\InvalidSorterDirectionException($direction);
+        }
 
-    	$this->direction = $direction;
+        $this->direction = $direction;
 
-    	return $this;
+        return $this;
     }
 
     /**
@@ -81,7 +81,6 @@ class SorterField
      */
     public function getDirection()
     {
-    	return $this->direction;
+        return $this->direction;
     }
 }
-
