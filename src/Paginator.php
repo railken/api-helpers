@@ -6,23 +6,23 @@ use Railken\ApiHelpers\Contracts\PaginatorContract;
 
 use Railken\Bag;
 
-abstract class Paginator implements PaginatorContract
+class Paginator implements PaginatorContract
 {
 
     /**
-     * Perform the query and retrieve the information about pagination
+     * Retrieve the information about pagination
+     *
+     * @param integer $total
      *
      * @return $this
      */
-    public function paginate($query, $page = 1, $take = 10)
+    public function paginate($total, $page = 1, $take = 10)
     {
         $take = (int)$take;
         $page = (int)$page;
 
         $take <= 0 && $take = 10;
         $page <= 0 && $page = 1;
-
-        $total = $this->count($query);
 
         $skip = ($page - 1) * $take;
         $last = $skip + $take;

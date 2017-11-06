@@ -1,7 +1,7 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-use Railken\ApiHelpers\Tests\Paginator;
+use Railken\ApiHelpers\Paginator;
 
 
 class PaginatorTest extends TestCase
@@ -11,7 +11,7 @@ class PaginatorTest extends TestCase
     public function testLastPage()
     {   
         $paginator = new Paginator();
-        $pagination = $paginator->paginate(new \stdClass(), 100, 10);
+        $pagination = $paginator->paginate(999, 100, 10);
 
         $this->assertEquals(999, $pagination->total);
         $this->assertEquals(10, $pagination->take);
@@ -26,7 +26,7 @@ class PaginatorTest extends TestCase
     public function testFirstPage()
     {   
         $paginator = new Paginator();
-        $pagination = $paginator->paginate(new \stdClass(), 1, 10);
+        $pagination = $paginator->paginate(999, 1, 10);
 
         $this->assertEquals(999, $pagination->total);
         $this->assertEquals(10, $pagination->take);
@@ -40,7 +40,7 @@ class PaginatorTest extends TestCase
     public function testSecondPage()
     {   
         $paginator = new Paginator();
-        $pagination = $paginator->paginate(new \stdClass(), 2, 10);
+        $pagination = $paginator->paginate(999, 2, 10);
 
         $this->assertEquals(999, $pagination->total);
         $this->assertEquals(10, $pagination->take);
@@ -54,7 +54,7 @@ class PaginatorTest extends TestCase
     public function testMidPage()
     {   
         $paginator = new Paginator();
-        $pagination = $paginator->paginate(new \stdClass(), 51, 10);
+        $pagination = $paginator->paginate(999, 51, 10);
 
         $this->assertEquals(999, $pagination->total);
         $this->assertEquals(10, $pagination->take);
