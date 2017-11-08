@@ -14,6 +14,13 @@ class Sorter
      * @var Collection
      */
     protected $values;
+    
+    /**
+     * List of sorting keys
+     *
+     * @var Collection
+     */
+    protected $keys;
 
     /**
      * Construct
@@ -21,6 +28,18 @@ class Sorter
     public function __construct()
     {
         $this->values = new Collection();
+    }
+    
+    /**
+     * Set keys
+     *
+     * @param array $keys
+     * 
+     * @return $this
+     */
+    public function setKeys($keys)
+    {
+        $this->keys = $keys;
     }
 
     /**
@@ -33,6 +52,10 @@ class Sorter
      */
     public function add($name, $direction)
     {
+        
+        if (!in_array($name, $this->keys))
+            return;
+        
         $field = new SorterField();
         $field->setName($name);
         $field->setDirection($direction);
