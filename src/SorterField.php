@@ -65,10 +65,6 @@ class SorterField
     {
         $direction = strtolower($direction);
 
-        if (!in_array($direction, ['asc', 'desc'])) {
-            throw new Exceptions\InvalidSorterDirectionException($direction);
-        }
-
         $this->direction = $direction;
 
         return $this;

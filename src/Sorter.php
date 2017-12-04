@@ -53,8 +53,13 @@ class Sorter
     public function add($name, $direction)
     {
         
-        if (!in_array($name, $this->keys))
-            return;
+        if (!in_array($name, $this->keys)) {
+            throw new Exceptions\InvalidSorterFieldException($name);
+        }
+
+        if (!in_array($direction, ['asc', 'desc'])) {
+            throw new Exceptions\InvalidSorterDirectionException($direction);
+        }
         
         $field = new SorterField();
         $field->setName($name);
