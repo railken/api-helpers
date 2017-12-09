@@ -4,6 +4,7 @@ namespace Railken\ApiHelpers;
 
 use Railken\ApiHelpers\Exceptions as Exceptions;
 use Railken\SQ\QueryParser;
+use Railken\SQ\Resolvers as Resolvers;
 
 class Filter
 {
@@ -24,6 +25,24 @@ class Filter
      */
     public function parse($query)
     {
-        return (new QueryParser())->parse($query);
+        $parser = new QueryParser();
+        $parser->addResolvers([
+            new Resolvers\GroupingResolver(),
+            new Resolvers\NotEqResolver(),
+            new Resolvers\EqResolver(),
+            new Resolvers\LtResolver(),
+            new Resolvers\LteResolver(),
+            new Resolvers\GtResolver(),
+            new Resolvers\GteResolver(),
+            new Resolvers\CtResolver(),
+            new Resolvers\SwResolver(),
+            new Resolvers\NotInResolver(),
+            new Resolvers\InResolver(),
+            new Resolvers\EwResolver(),
+            new Resolvers\AndResolver(),
+            new Resolvers\OrResolver(),
+        ]);
+
+        return $parser->parse($query);
     }
 }

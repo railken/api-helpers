@@ -2,6 +2,7 @@
 
 use PHPUnit\Framework\TestCase;
 use Railken\ApiHelpers\Filter;
+use Railken\SQ\Nodes as Nodes;
 
 
 class FilterTest extends TestCase
@@ -9,6 +10,11 @@ class FilterTest extends TestCase
 
     public function testBasic()
     {   
-        $this->assertEquals(Filter::class, get_class(new Filter()));
+        $filter = new Filter();
+
+        $result = $filter->parse('x eq 1');
+        $this->assertEquals(Nodes\EqNode::class, get_class($result));
+        $this->assertEquals('x', $result->getKey());
+        $this->assertEquals('1', $result->getValue());
     }
 }
